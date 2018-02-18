@@ -6,7 +6,7 @@ Data for DB is provided in "menu-task/data" in CSV formats.
 * Symfony 4
 * Postgres 10
 
-#### Project dependencies:
+#### Project dependencies
 [Composer](https://getcomposer.org/) is used for managing dependencies.
 
 Open a terminal window & run ```composer install``` command at root of the project.
@@ -14,7 +14,7 @@ It will install all required dependencies of the project which are specified in 
 It will also create ```vendor``` directory on file system.
 
 
-DB Connection:
+### DB Connection
 update connection information in menu-task/config/packages/doctrine.yaml
 
 #### Web server:

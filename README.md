@@ -37,6 +37,7 @@ Child category can't have more children than allowed by parent category "Max All
 
 
 DB Schema:
+DB schema is defined in menu-task/config/doctrine/
 To generate the necessary schema in database, run "php bin/console doctrine:schema:update --force" at root of the project.
 
 Populating the database:

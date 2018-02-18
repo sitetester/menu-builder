@@ -14,7 +14,7 @@ It will install all required dependencies of the project which are specified in 
 It will also create ```vendor``` directory on file system.
 
 
-### DB Connection
+#### DB Connection
 update connection information in menu-task/config/packages/doctrine.yaml
 
 #### Web server:
@@ -49,7 +49,7 @@ It will simply add hard coded data which is passed to $product entity instance i
 Changing the "active" status from false to true will increase active child count of parent category tree.
 Similarly changing the "active" status from true to false will decrease the child count of parent category tree.
 
-### Child Count
+#### Child Count
 For logged in user, there are additional counts visible (next to each category) which simply show total no of child (categories + products) under this category.
 
 

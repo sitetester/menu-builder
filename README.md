@@ -23,6 +23,10 @@ Open a terminal window & run "php bin/console server:start" at root of the proje
 server started in terminal window.
 
 
+Login: 
+user: admin
+password: demo
+
 Checks:
 Max Allowed Children:
 CHILD category can't have "Max Allowed Children" GREATER than PARENT category "Max Allowed Children"

@@ -27,52 +27,46 @@ class ProductController extends Controller
      */
     public function add(Request $request, $categoryId)
     {
+        $category = $this->getDoctrine()->getRepository(Category::class)->find($categoryId);
+        if ($category === null) {
+            return new Response('Category not found for given ID (' . $categoryId . ')');
+        }
 
-        for ($i = 1; $i < 2; $i++) {
-            $category = $this->getDoctrine()->getRepository(Category::class)->find($categoryId);
-            if ($category === null) {
-                return new Response('Category not found for given ID (' . $categoryId . ')');
-            }
+        //  (child_count > max_allowed_children) ?
+        if ($this->categoriesManager->isParentCategoryTreeIncrementedChildCountGreaterThanMaxAllowedChildren($categoryId)) {
+            return new Response('Parent category tree max allowed children limit reached.');
+        }
 
+        $em = $this->getDoctrine()->getManager();
+        $product = new Product();
+        $product
+            ->setName('Test Product ')
+            ->setCurrency('€')
+            ->setPrice(10.00);
 
-            // check childCount of parent category tree
-            //  (child_count > max_allowed_children) ?
-            if ($this->categoriesManager->isParentCategoryTreeIncrementedChildCountGreaterThanMaxAllowedChildren($categoryId)) {
-                return new Response('Parent category tree max allowed children limit reached.');
-            }
+        $form = $this->createFormBuilder($product)
+            ->add('name', TextType::class)
+            ->add('price', TextType::class)
+            ->add(
+                'active',
+                ChoiceType::class,
+                [
+                    'choices' => [
+                        'Yes' => true,
+                        'No' => false,
+                    ],
+                    'expanded' => true,
+                    'multiple' => false,
+                ]
+            )
+            ->add('save', SubmitType::class, ['label' => 'Save'])
+            ->getForm();
 
-            $em = $this->getDoctrine()->getManager();
-            $product = new Product();
-            $product
-                ->setName('Test Product ')
-                ->setCurrency('€')
-                ->setPrice(10.00);
+        $form->handleRequest($request);
 
-            /*$form = $this->createFormBuilder($product)
-                ->add('name', TextType::class)
-                ->add('price', TextType::class)
-                ->add(
-                    'active',
-                    ChoiceType::class,
-                    [
-                        'choices' => [
-                            'Yes' => true,
-                            'No' => false,
-                        ],
-                        'expanded' => true,
-                        'multiple' => false,
-                    ]
-                )
-                ->add('save', SubmitType::class, ['label' => 'Save'])
-                ->getForm();
-
-            $form->handleRequest($request);*/
-
-            // if ($form->isSubmitted() && $form->isValid()) {
-
+        if ($form->isSubmitted() && $form->isValid()) {
             /** @var Product $product */
-            // $product = $form->getData();
-
+            $product = $form->getData();
             $product->setCategory($category);
             $em->persist($product);
             $em->flush();
@@ -81,15 +75,15 @@ class ProductController extends Controller
             $this->updateParentCategoryTreeCounts($categoryId, '+', true, true);
 
             return $this->redirectToRoute('menus');
-            // }
-
-            /*return $this->render(
-                'product/add.html.twig',
-                [
-                    'form' => $form->createView(),
-                ]
-            );*/
         }
+
+        return $this->render(
+            'product/add.html.twig',
+            [
+                'form' => $form->createView(),
+            ]
+        );
+
     }
 
     /**

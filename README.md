@@ -31,6 +31,10 @@ PARENT category can't have "Max Allowed Children" LESS than CHILD category "Max 
 No. Of Elements:
 Child category can't have more children than allowed by parent category "Max Allowed Children"
 
+
+DB Schema:
+To generate the necessary schema in database, run "php bin/console doctrine:schema:update --force" at root of the project.
+
 Populating the database:
 To populate the database, you can use "AUTO CLICK" Google Chrome extension, while disabling the show "Add Product" form in code.
 It will simply add hard coded data which is passed to $product entity instance in ProductController:add()

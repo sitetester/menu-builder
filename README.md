@@ -31,11 +31,9 @@ Logged In user can add/edit categories & products, while non logged in user can 
 Tree for non logged in user user is generated in seconds.
 
 #### Max Allowed Children
-CHILD category can't have "Max Allowed Children" GREATER than PARENT category "Max Allowed Children"
-PARENT category can't have "Max Allowed Children" LESS than CHILD category "Max Allowed Children"
-
-No. Of Elements:
-Child category can't have more children than allowed by parent category "Max Allowed Children"
+* CHILD category can't have "Max Allowed Children" GREATER than PARENT category "Max Allowed Children"
+* PARENT category can't have "Max Allowed Children" LESS than CHILD category "Max Allowed Children"
+* Child category can't have more children than allowed by parent category "Max Allowed Children"
 
 
 #### DB Schema

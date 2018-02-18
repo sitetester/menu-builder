@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Entity\Product" table="products" repository-class="App\Repository\ProductRepository">
+
+        <indexes>
+            <index name="products_active_idx" columns="active"/>
+            <index name="category_id_idx" columns="category_id"/>
+        </indexes>
+
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name"/>
+        <field name="active" type="boolean" />
+        <field name="price" type="float"/>
+        <field name="currency"/>
+
+        <many-to-one
+                field="category"
+                target-entity="App\Entity\Category"
+                inversed-by="products">
+            <join-column />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

@@ -1,0 +1,30 @@
+parameters:
+    # Adds a fallback DATABASE_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(DATABASE_URL): ''
+
+doctrine:
+    dbal:
+        default_connection: pgsql
+        connections:
+            pgsql:
+                driver:   pdo_pgsql
+                host:     "localhost"
+                port:     "5432"
+                dbname:   "menu_task"
+                user:     "postgres"
+                password: ""
+                charset:  UTF8
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine'
+                prefix: 'App\Entity'
+                alias: App

@@ -9,9 +9,9 @@ Data for DB is provided in "menu-task/data" in CSV formats.
 #### Project dependencies:
 [Composer](https://getcomposer.org/) is used for managing dependencies.
 
-Open a terminal window & run "composer install" command at root of the project.
-It will install all required dependencies of the project which are specified in "composer.json" file.
-It will also create "vendor" directory on file system.
+Open a terminal window & run ```composer install``` command at root of the project.
+It will install all required dependencies of the project which are specified in ```composer.json``` file.
+It will also create ```vendor``` directory on file system.
 
 
 DB Connection:
@@ -19,7 +19,7 @@ update connection information in menu-task/config/packages/doctrine.yaml
 
 #### Web server:
 If you don't have apache/nginx already configured, you can use php built-in web server as well.
-Open a terminal window & run "php bin/console server:start" at root of the project to start the server. Then open a browser with address & port where web
+Open a terminal window & run ```php bin/console server:start``` at root of the project to start the server. Then open a browser with address & port where web
 server started in terminal window.
 
 
@@ -40,7 +40,7 @@ Child category can't have more children than allowed by parent category "Max All
 
 #### DB Schema
 DB schema is defined in menu-task/config/doctrine/
-To generate the necessary schema in database, run "php bin/console doctrine:schema:update --force" at root of the project.
+To generate the necessary schema in database, run ```php bin/console doctrine:schema:update --force``` at root of the project.
 
 ####  Populating the database
 To populate the database, you can use "AUTO CLICK" Google Chrome extension, while disabling the show "Add Product" form in code.

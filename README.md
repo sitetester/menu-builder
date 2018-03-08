@@ -15,7 +15,7 @@ It will also create ```vendor``` directory on file system.
 
 
 #### DB Connection
-update connection information in menu-task/config/packages/doctrine.yaml
+update connection information in /config/packages/doctrine.yaml
 Data for DB is provided in "menu-task/data" in CSV formats.
 
 #### Web server:

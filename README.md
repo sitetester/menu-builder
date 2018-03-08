@@ -1,5 +1,5 @@
-Attached please find source code without "vendor" directory.
-Data for DB is provided in "menu-task/data" in CSV formats.
+### Task Desription
+See task_description.txt at root of the project.
 
 #### Required setup/environment:
 * PHP 7.2
@@ -16,6 +16,7 @@ It will also create ```vendor``` directory on file system.
 
 #### DB Connection
 update connection information in menu-task/config/packages/doctrine.yaml
+Data for DB is provided in "menu-task/data" in CSV formats.
 
 #### Web server:
 If you don't have apache/nginx already configured, you can use php built-in web server as well.

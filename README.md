@@ -28,8 +28,8 @@ server started in terminal window.
 * admin
 * demo
 
-Logged In user can add/edit categories & products, while non logged in user can only view the tree
-Tree for non logged in user user is generated in seconds.
+Logged In user can add/edit categories & products, while non logged in user can only view the tree.
+Tree for non logged in user user is generated fast(in seconds)
 
 #### Max Allowed Children
 * CHILD category can't have "Max Allowed Children" GREATER than PARENT category "Max Allowed Children"
